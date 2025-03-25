@@ -12,6 +12,7 @@
     <PackageReference Include="Umbraco.Engage" Version="13.4.0-rc.1" />
     <PackageReference Include="Umbraco.Engage.Commerce" Version="13.0.0" />
     <PackageReference Include="Umbraco.Engage.Forms" Version="13.1.1" />
+    <PackageReference Include="Umbraco.Engage.Headless" Version="13.4.0-rc.1" />
     <PackageReference Include="Umbraco.Forms" Version="13.4.1" />
     <PackageReference Include="uSync" Version="13.2.6" />
     <PackageReference Include="uSync.Forms" Version="13.4.4" />

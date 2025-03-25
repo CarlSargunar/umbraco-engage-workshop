@@ -1,9 +1,12 @@
+using Umbraco.Engage.Headless.Extensions;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.CreateUmbracoBuilder()
     .AddBackOffice()
     .AddWebsite()
     .AddDeliveryApi()
+    .AddEngageApiDocumentation()
     .AddComposers()
     .Build();
 
