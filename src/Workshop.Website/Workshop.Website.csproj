@@ -9,6 +9,7 @@
     <PackageReference Include="Clean" Version="4.1.0" />
     <PackageReference Include="Umbraco.Cms" Version="13.7.2" />
     <PackageReference Include="Umbraco.Commerce" Version="13.2.0" />
+    <PackageReference Include="Umbraco.Community.DeliveryApiExtensions" Version="13.1.1" />
     <PackageReference Include="Umbraco.Engage" Version="13.4.0-rc.1" />
     <PackageReference Include="Umbraco.Engage.Commerce" Version="13.0.0" />
     <PackageReference Include="Umbraco.Engage.Forms" Version="13.1.1" />
