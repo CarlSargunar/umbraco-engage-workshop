@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Clean" Version="4.1.0" />
+    <PackageReference Include="Clean" Version="4.1.0">
+      <ExcludeAssets>buildTransitive</ExcludeAssets>
+    </PackageReference>
     <PackageReference Include="Umbraco.Cms" Version="13.7.2" />
     <PackageReference Include="Umbraco.Commerce" Version="13.2.0" />
     <PackageReference Include="Umbraco.Community.DeliveryApiExtensions" Version="13.1.1" />
