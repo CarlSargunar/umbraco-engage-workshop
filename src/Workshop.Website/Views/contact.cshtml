@@ -2,6 +2,7 @@
 
 @using Clean.Core.Models.ViewModels
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+@using Umbraco.Forms.Web
 
 @{
     Layout = "master.cshtml";
@@ -12,13 +13,14 @@
     }
 }
 
-@await Html.PartialAsync("~/Views/Partials/pageHeader.cshtml", new PageHeaderViewModel(Model.Name, Model.Title, Model.Subtitle, Model.MainImage))
+@await Html.PartialAsync("~/Views/Partials/pageHeader.cshtml", new PageHeaderViewModel(Model.Name, Model.Title,
+Model.Subtitle, Model.MainImage))
 
 <main class="mb-4">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                @if(submitted)
+                @if (submitted)
                 {
 
                     @if (success)
@@ -34,11 +36,13 @@
                 {
                     @Model.InstructionMessage
                     <div class="my-5">
-                        @await Component.InvokeAsync("Contact")
+                        <umb-forms-render form-id="@(new Guid("80bd3f56-8285-4d73-af04-061b3033a05d"))" theme="default"
+                            exclude-scripts="false" />
                     </div>
-
                 }
             </div>
         </div>
     </div>
 </main>
+
+@Html.RenderUmbracoFormDependencies(Url, new { @async = "async" })
