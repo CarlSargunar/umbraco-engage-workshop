@@ -1,28 +1,13 @@
-using Microsoft.Extensions.Options;
-using Umbraco.Cms.Core.Configuration.Models;
-using Umbraco.Cms.Core.IO;
-using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
-using Umbraco.Cms.Core.Strings;
 using Umbraco.Cms.Infrastructure.Migrations;
-using Umbraco.Cms.Infrastructure.Packaging;
 
 namespace Workshop.Website.Migrations;
 
-public class WorkshopMemberMigration : PackageMigrationBase
+public class WorkshopMemberMigration : MigrationBase
 {
     private readonly IMemberService _memberService;
 
-    public WorkshopMemberMigration(
-        IPackagingService packagingService,
-        IMediaService mediaService,
-        MediaFileManager mediaFileManager,
-        MediaUrlGeneratorCollection mediaUrlGenerators,
-        IShortStringHelper shortStringHelper,
-        IContentTypeBaseServiceProvider contentTypeBaseServiceProvider,
-        IMigrationContext context,
-        IOptions<PackageMigrationSettings> packageMigrationsSettings,
-        IMemberService memberService) : base(packagingService, mediaService, mediaFileManager, mediaUrlGenerators, shortStringHelper, contentTypeBaseServiceProvider, context, packageMigrationsSettings)
+    public WorkshopMemberMigration(IMigrationContext context, IMemberService memberService) : base(context)
     {
         _memberService = memberService;
     }

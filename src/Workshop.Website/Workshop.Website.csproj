@@ -10,10 +10,10 @@
     <PackageReference Include="Umbraco.Cms" Version="13.7.2" />
     <PackageReference Include="Umbraco.Commerce" Version="13.2.0" />
     <PackageReference Include="Umbraco.Community.DeliveryApiExtensions" Version="13.1.1" />
-    <PackageReference Include="Umbraco.Engage" Version="13.4.0-rc.1" />
+    <PackageReference Include="Umbraco.Engage" Version="13.4.0" />
     <PackageReference Include="Umbraco.Engage.Commerce" Version="13.0.0" />
     <PackageReference Include="Umbraco.Engage.Forms" Version="13.1.1" />
-    <PackageReference Include="Umbraco.Engage.Headless" Version="13.4.0-rc.1" />
+    <PackageReference Include="Umbraco.Engage.Headless" Version="13.4.0" />
     <PackageReference Include="Umbraco.Forms" Version="13.4.1" />
     <PackageReference Include="uSync" Version="13.2.6" />
     <PackageReference Include="uSync.Forms" Version="13.4.4" />
@@ -23,6 +23,11 @@
     <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Migrations/package.zip" />
+    <EmbeddedResource Include="Migrations/package.zip" />
   </ItemGroup>
 
   <PropertyGroup>
