@@ -1,8 +1,12 @@
 using Umbraco.Engage.Headless.Extensions;
+using Umbraco.Engage.Infrastructure.Permissions.ModulePermissions;
+using Workshop.Website.Engage;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options => options.AddPolicy("AllowAnyOrigin", policy => policy.AllowAnyOrigin()));
+builder.Services
+    .AddCors(options => options.AddPolicy("AllowAnyOrigin", policy => policy.AllowAnyOrigin()))
+    .AddUnique<IModulePermissions, CookieModulePermission>();
 
 builder.CreateUmbracoBuilder()
     .AddBackOffice()
