@@ -10,6 +10,7 @@ namespace Workshop.Website.Revalidate
         {
             builder.Services.AddTransient<NextJsRevalidateService>();
             builder.AddNotificationAsyncHandler<ContentPublishedNotification, NextJsRevalidatePublishedNotificationHandler>();
+            builder.AddNotificationAsyncHandler<DictionaryItemSavedNotification, NextJsRevalidateDictionaryNotificationHandler>();
 
             OptionsBuilder<NextJsRevalidateOptions> optionsBuilder = builder.Services.AddOptions<NextJsRevalidateOptions>()
                 .BindConfiguration("NextJs:Revalidate")

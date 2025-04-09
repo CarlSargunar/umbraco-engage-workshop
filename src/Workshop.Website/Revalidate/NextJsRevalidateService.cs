@@ -16,15 +16,7 @@ namespace Workshop.Website.Revalidate
             _config = options.Value;
             _logger = logger;
         }
-
-        public async Task ForPortal()
-        {
-            await Send(new
-            {
-                updatePortal = true
-            });
-        }
-
+        
         public async Task ForNavigation()
         {
             await Send(new
@@ -38,6 +30,14 @@ namespace Workshop.Website.Revalidate
             await Send(new
             {
                 contentPath = path
+            });
+        }
+        
+        public async Task ForLocalisation()
+        {
+            await Send(new
+            {
+                updateLocalisation = true
             });
         }
 
