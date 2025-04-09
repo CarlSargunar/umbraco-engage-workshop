@@ -50,7 +50,8 @@ public class WorkshopComponent : IComponent
         var migrationPlan = new MigrationPlan("EngageWorkshop");
 
         migrationPlan.From(string.Empty)
-            .To<WorkshopMemberMigration>("create-workshop-member");
+            .To<WorkshopMemberMigration>("create-workshop-member")
+            .To<PackageXmlMigration>("package-xml");
 
         var upgrader = new Upgrader(migrationPlan);
         upgrader.Execute(_migrationPlanExecutor, _coreScopeProvider, _keyValueService);
