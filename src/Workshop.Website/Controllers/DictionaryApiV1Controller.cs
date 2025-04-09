@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Api.Common.Attributes;
@@ -10,7 +9,8 @@ namespace Workshop.Website.Controllers;
 
 [Route("api/v{version:apiVersion}/dictionary")]
 [ApiVersion("1.0")]
-[MapToApi("Dictionary")]
+[MapToApi("clean-starter")]
+[ApiExplorerSettings(GroupName = "Translation")]
 [ApiController]
 public class DictionaryApiV1Controller(
 	ILocalizationService localizationService,
@@ -34,9 +34,8 @@ public class DictionaryApiV1Controller(
 			var dictionaryItems = localizationService.GetDictionaryItemDescendants(null);
 
 			var translationModels = dictionaryItems.Select(dictionaryItem => GetTranslationForDictionaryItem(dictionaryItem, culture));
-			var serializedTranslationsModels = JsonSerializer.Serialize(translationModels);
 
-			return Ok(serializedTranslationsModels);
+			return Ok(translationModels);
 		}
 		catch (Exception exception)
 		{

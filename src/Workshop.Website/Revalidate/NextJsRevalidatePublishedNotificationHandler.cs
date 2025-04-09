@@ -18,12 +18,16 @@ namespace Workshop.Website.Revalidate
             _umbracoContextAccessor = umbracoContextAccessor;
         }
 
-        private string[] AllowedContentContentType = new string[] { "Content", "Home", "Contact", "ArticleList", "Article" };
-
-        private string[] NavigationTypes = new string[] { "Home" };
+        private string[] AllowedContentContentType = new string[] { "content", "home", "contact", "articleList", "article" };
 
         public async Task HandleAsync(ContentPublishedNotification notification, CancellationToken cancellationToken)
         {
+            if (notification.PublishedEntities.Any(x => x.Level is 1 or 2 && !x.GetValue<bool>("hideFromTopNavigation")))
+            {
+                _logger.LogInformation("Navigation next js revalidation triggered");
+                await _revalidateService.ForNavigation();
+            }
+            
             foreach (var content in notification.PublishedEntities)
             {
                 if(AllowedContentContentType.Any(x => x == content.ContentType.Alias))
@@ -38,12 +42,6 @@ namespace Workshop.Website.Revalidate
                             await _revalidateService.ForContent(path);
                         }
                     }
-                }
-
-                if(NavigationTypes.Any(x => x == content.ContentType.Alias))
-                {
-                    _logger.LogInformation("Navigation next js revalidation triggered");
-                    await _revalidateService.ForNavigation();
                 }
             }
         }
