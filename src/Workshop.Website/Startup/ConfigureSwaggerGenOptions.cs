@@ -1,0 +1,22 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+
+using Swashbuckle.AspNetCore.SwaggerGen;
+
+namespace Workshop.Website.Startup;
+internal class ConfigureSwaggerGenOptions : IConfigureOptions<SwaggerGenOptions>
+{
+    public void Configure(SwaggerGenOptions options)
+    {
+        options.SwaggerDoc(
+            "clean-starter",
+            new OpenApiInfo
+            {
+                Title = "Clean starter kit",
+                Version = "Latest",
+                Description = "Contains headless endpoints for search, dictionaries and forms"
+            });
+
+    }
+}

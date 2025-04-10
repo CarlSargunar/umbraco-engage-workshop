@@ -9,7 +9,15 @@ using Workshop.Website.Migrations;
 
 namespace Workshop.Website.Startup;
 
-public class WorkshopComposer : ComponentComposer<WorkshopComponent>
+public class WorkshopComposer : IComposer
+{
+    public void Compose(IUmbracoBuilder builder)
+    {
+        builder.Services.ConfigureOptions<ConfigureSwaggerGenOptions>();
+    }
+}
+
+public class WorkshopComponentComposer : ComponentComposer<WorkshopComponent>
 {
 }
 
